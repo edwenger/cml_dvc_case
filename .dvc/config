@@ -1,4 +1,6 @@
 [core]
-    remote = myremote
-['remote "myremote"']
-    url = s3://dvc-public/remote/cml_example
+    remote = azure_storage
+    autostage = true
+['remote "azure_storage"']
+    url = azure://test-azcopy-blob
+    account_name = cs410032001fddd9974
