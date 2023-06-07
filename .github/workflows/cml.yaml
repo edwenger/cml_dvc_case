@@ -7,6 +7,10 @@ jobs:
     runs-on: [ubuntu-latest]
 
     steps:
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+          
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
@@ -41,4 +45,4 @@ jobs:
           dvc plots diff --target loss.csv --show-vega master > vega.json
           vl2png vega.json -s 1.3 > vega.png
           echo '![](./vega.png)' >> report.md
-          cml comment create --pr --publish report.md
+          cml comment create --target=pr --publish report.md
